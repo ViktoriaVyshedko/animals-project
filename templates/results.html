@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Результаты классификации</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .btn { background: #4CAF50; color: white; padding: 10px 15px; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Результаты классификации</h1>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Файл</th>
+                <th>Класс</th>
+                <th>ID класса</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in results %}
+            <tr>
+                <td>{{ item.filename }}</td>
+                <td>{{ item.class }}</td>
+                <td>{{ item.class_id }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <a href="/download?csv_data={{ csv_data | urlencode }}" class="btn">Скачать CSV</a>
+    <a href="/" class="btn">Загрузить новые изображения</a>
+</body>
+</html>
